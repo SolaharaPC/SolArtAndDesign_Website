@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio - Pascale Coulombe • Sol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Config Tailwind (palette elfe noire) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#05040a',
+            nightSoft: '#0b0914',
+            obsidian: '#151021',
+            arcane: '#7b4dc9',
+            arcaneSoft: '#9b6cf1',
+            silver: '#d4d4dd',
+            rune: '#2e2343'
+          },
+          fontFamily: {
+            serif: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'arcane': '0 0 25px rgba(123, 77, 201, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts (optionnel) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles custom -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-night text-silver font-sans antialiased">
+  <!-- Fond dégradé -->
+  <div class="fixed inset-0 -z-10 bg-gradient-to-b from-night via-nightSoft to-black"></div>
+  <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_top,_#321f52_0,_transparent_60%)]"></div>
+
+  <!-- Wrapper -->
+  <div class="min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <header class="border-b border-rune/60 bg-night/80 backdrop-blur-sm sticky top-0 z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-full border border-arcaneSoft/60 bg-rune/50 flex items-center justify-center shadow-arcane ring-1 ring-arcane/40">
+            <span class="text-arcaneSoft text-lg">☽</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-serif text-silver text-sm tracking-[0.25em] uppercase">Portfolio</div>
+            <div class="text-xs text-arcaneSoft/80">Pascale Coulombe - Sol</div>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="nav-link nav-link-active">Galerie</a>
+          <!-- Tu pourras ajouter une page "À propos" plus tard -->
+          <!-- <a href="about.html" class="nav-link">À propos</a> -->
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="flex-1">
+      <!-- HERO -->
+      <section class="border-b border-rune/60 bg-gradient-to-b from-nightSoft/80 via-night/40 to-transparent">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+          <div class="grid lg:grid-cols-[1.4fr,1fr] gap-10 items-center">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-arcaneSoft/70 mb-4">Portfolio • Univers fantasy</p>
+              <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-silver mb-4">
+                <span class="text-arcaneSoft">Chroniques</span> d'Ombres et d'Arcanes
+              </h1>
+              <p class="text-sm sm:text-base text-silver/80 leading-relaxed mb-6">
+                Portfolio d’univers, de personnages et de projets narratifs inspirés des profondeurs
+                drow, d’elfes noirs et de mondes oubliés. Textes, illustrations, systèmes de jeu, et
+                créations hybrides entre littérature et jeu de rôle.
+              </p>
+
+              <div class="flex flex-wrap gap-3 items-center">
+                <a href="#galerie" class="btn-primary">
+                  Découvrir la galerie
+                </a>
+                <a href="contact.html" class="btn-ghost">
+                  Me contacter
+                </a>
+              </div>
+            </div>
+
+            <div class="hidden sm:block">
+              <div class="arcane-panel relative">
+                <div class="absolute -top-3 -right-3 w-10 h-10 rounded-full border border-arcaneSoft/60 bg-night flex items-center justify-center text-xs tracking-[0.3em] uppercase">
+                  <span class="text-arcaneSoft">Test</span>
+                </div>
+                <div class="text-xs text-arcaneSoft/80 uppercase tracking-[0.3em] mb-3">Univers principal</div>
+                <h2 class="font-serif text-xl mb-2 text-silver">Les Profondeurs de Ber'Vhysla</h2>
+                <p class="text-xs text-silver/80 mb-4 leading-relaxed">
+                  Cités caverneuses, architectures d’obsidienne, mines de stigmates, et jeux de
+                  pouvoir entre grandes Maisons. Un univers où chaque lumière a un prix, et où les
+                  ombres écoutent.
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 text-[0.7rem] text-silver/80">
+                  <div class="mini-pill">
+                    <span class="text-arcaneSoft">◆</span> Dark Fantasy
+                  </div>
+                  <div class="mini-pill">
+                    <span class="text-arcaneSoft">◆</span> Narration
+                  </div>
+                  <div class="mini-pill">
+                    <span class="text-arcaneSoft">◆</span> Worldbuilding
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SÉPARATEUR BROSSÉ AU-DESSUS DE LA GALERIE -->
+<div class="separator-brush separator-brush-shadow"></div>
+
+<section id="galerie" class="py-10 sm:py-14 lg:py-16 bg-nightSoft/80">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-end justify-between gap-4 mb-8">
+      <div>
+        <h2 class="section-title">Galerie de projets</h2>
+        <p class="section-subtitle">
+          Explorez les univers, systèmes et récits en sélectionnant une affiche.
+        </p>
+      </div>
+    </div>
+
+    <!-- GRID D’“AFFICHES” À LA GUILD WARS -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- PROJET 1 -->
+      <a href="project_pages\project-valistria.html" class="project-card group">
+        <div class="project-card-image h-80">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczPvMiXRJjkwbrzlSVKad9zS4NTVbKWykq9atYIE2oCvmiENeBwhNVpO8pqO_y6G_VErUh4mm5Ns8I0my7nNLcfsvAJ64Mq7ihJ0zXNC6Ktb1Y2nkQueKiRsP4K_1wqMqHMG66_vYl4Sr_22JdU3pLJz=w635-h953-s-no-gm?authuser=0"
+            alt="Choisissez votre aventure" />
+          <div class="project-card-gradient"></div>
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-card-title">
+            NOVELLA<br>DAMNATION
+          </h3>
+          <p class="project-card-text">
+            Dans un univers Dark Fantasy où lumière et ombres s'affrontent dans une lutte...
+          </p>
+        </div>
+      </a>
+
+      <!-- PROJET 2 -->
+      <a href="project.html" class="project-card group">
+        <div class="project-card-image h-80">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczPBmtuQ9_MoVqrUvy0jxXqRKwAK-uKiIjUq91lquBDgPkGv7Ty_wljbSKXbcRF_ouyxQhc_hSRBVfYPDKm1GTPqgpki5QqvGArgF5jupUxaM6NqaC4elvMp4yPUKoVkqYF8Fuj9ZyuJeQai-E4Ss7sC=w1776-h953-s-no-gm?authuser=0"
+            alt="Choisissez votre archétype" />
+          <div class="project-card-gradient"></div>
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-card-title">
+            ILLUSTRATION<br>WHISPERS IN THE DARK
+          </h3>
+          <p class="project-card-text">
+            Dans une université magique, une jeune elfe découvre ses nouvelles capacités magiques. Guidée par une entité mystérieuse qui se cache dans les ombres, Nikha souhaite comprendre fondamentalement l'Univers qui l'entoure.
+          </p>
+        </div>
+      </a>
+
+      <!-- PROJET 3 -->
+      <a href="project.html" class="project-card group">
+        <div class="project-card-image h-80">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczOokXimY6dU2MRBpz0nM_roNmfbktyOBXvJqY0IGZTYKomKqqumCJjsPy-c3xPTwniA_OOZhY4ks-Tt7deYBmG2voxtmc3WfznxEqHuRtdygn_37t85b0NNTV-k9VS12UzNR20zCkcXMaFfZr1Fu7m4=w1299-h326-s-no-gm?authuser=0"
+            alt="Choisissez vos alliés" />
+          <div class="project-card-gradient"></div>
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-card-title">
+            DEV<br>TURN ORDER
+          </h3>
+          <p class="project-card-text">
+            Programmé en LUA, cet addon pour World of Warcraft est une solution idéale pour concrétiser l'organisation de combats Roleplay. Il s'agit d'un outil simple pour organiser les tours de combat et automatiser les parties difficiles à garder en mémoire pour les maîtres du jeu.
+          </p>
+        </div>
+      </a>
+
+      <!-- PROJET 4 -->
+      <a href="project.html" class="project-card group">
+        <div class="project-card-image h-80">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczM8kLyfc_gPLhPpqQPUZX41sICui4WHNE5K4cgGGN-GiOxAhWHC6u9-LGrOmrgFMY0WgRshaJcTQy51WOvKBZtOvt0fKZpX8COuylHw8Dm67L4MNTP5yHSF2bHtHOvVavk_GCr4auC5Wyf9R2JAl9DY=w1610-h889-s-no-gm?authuser=0"
+            alt="Choisissez votre défi" />
+          <div class="project-card-gradient"></div>
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-card-title">
+            ANIMATION<br>UNDERWORLD
+          </h3>
+          <p class="project-card-text">
+            Donjons, campagnes, one-shots scénarisés ou projets hybrides :
+            chaque défi met à l’épreuve vos choix, vos mécaniques et vos
+            univers.
+          </p>
+        </div>
+      </a>
+	  
+	  <!-- PROJET 5 -->
+      <a href="project.html" class="project-card group">
+        <div class="project-card-image h-80">
+          <img
+            src="https://images.pexels.com/photos/1904769/pexels-photo-1904769.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Choisissez votre défi" />
+          <div class="project-card-gradient"></div>
+        </div>
+        <div class="project-card-body">
+          <h3 class="project-card-title">
+            CHOISISSEZ<br>VOTRE DÉFI
+          </h3>
+          <p class="project-card-text">
+            Donjons, campagnes, one-shots scénarisés ou projets hybrides :
+            chaque défi met à l’épreuve vos choix, vos mécaniques et vos
+            univers.
+          </p>
+        </div>
+      </a>
+
+      <!-- Duplique le bloc <a> pour d’autres projets (change href, image, titre, texte) -->
+
+    </div>
+  </div>
+</section>
+
+<!-- SÉPARATEUR BROSSÉ EN DESSOUS DE LA GALERIE (INVERSÉ) -->
+<div class="separator-brush separator-brush--flip separator-brush-shadow"></div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-rune/60 bg-night/90">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-[0.75rem] text-silver/60 flex flex-col sm:flex-row gap-3 justify-between items-center">
+        <div>
+          © <span id="year"></span> • Pascale Coulombe - Sol • Univers fantasy, design & programmation
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-arcaneSoft/70">✦</span>
+          <span>Contact : <a href="mailto:adresse@email.com" class="text-arcaneSoft hover:text-arcaneSoft/80">ld.pascale.coulombe@gmail.com</a></span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

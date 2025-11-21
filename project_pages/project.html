@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet – Titre du projet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#05040a',
+            nightSoft: '#0b0914',
+            obsidian: '#151021',
+            arcane: '#7b4dc9',
+            arcaneSoft: '#9b6cf1',
+            silver: '#d4d4dd',
+            rune: '#2e2343'
+          },
+          fontFamily: {
+            serif: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'arcane': '0 0 25px rgba(123, 77, 201, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-night text-silver font-sans antialiased">
+  <div class="fixed inset-0 -z-10 bg-gradient-to-b from-night via-nightSoft to-black"></div>
+  <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_top,_#321f52_0,_transparent_60%)]"></div>
+
+  <div class="min-h-screen flex flex-col">
+    <!-- NAV -->
+    <header class="border-b border-rune/60 bg-night/80 backdrop-blur-sm sticky top-0 z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-full border border-arcaneSoft/60 bg-rune/50 flex items-center justify-center shadow-arcane ring-1 ring-arcane/40">
+            <span class="text-arcaneSoft text-lg">☽</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-serif text-silver text-sm tracking-[0.25em] uppercase">Portfolio</div>
+            <div class="text-xs text-arcaneSoft/80">Nom de l'artiste</div>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="nav-link">Galerie</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENU -->
+    <main class="flex-1">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+        <!-- Header projet -->
+        <div class="flex items-start justify-between gap-4 mb-8">
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-arcaneSoft/70 mb-3">Projet narratif</p>
+            <h1 class="font-serif text-3xl sm:text-4xl text-silver mb-2">
+              Titre du Projet
+            </h1>
+            <p class="text-sm text-silver/80 max-w-xl">
+              Courte accroche qui résume le projet : univers, ambiance, médium (roman, campagne JDR,
+              addon, illustration, etc.).
+            </p>
+          </div>
+          <div class="hidden sm:flex flex-col items-end gap-2 text-[0.7rem] text-silver/70">
+            <div class="mini-pill">
+              <span class="text-arcaneSoft">◆</span> Dark Fantasy
+            </div>
+            <div class="mini-pill">
+              <span class="text-arcaneSoft">◆</span> Texte & visuel
+            </div>
+          </div>
+        </div>
+
+        <!-- Section principale : texte + visuel -->
+        <div class="grid lg:grid-cols-[minmax(0,_1.4fr)_minmax(0,_1fr)] gap-8 lg:gap-10 mb-10">
+          <!-- Texte / description -->
+          <article class="arcane-panel">
+            <h2 class="section-subtitle mb-4">Présentation</h2>
+            <div class="prose prose-invert prose-sm max-w-none">
+              <!-- Tu peux coller ici tes textes -->
+              <p>
+                Ici, tu peux écrire la description détaillée du projet, le contexte narratif, les
+                enjeux, les personnages principaux, etc. Tu peux organiser en plusieurs paragraphes
+                pour garder une bonne lisibilité.
+              </p>
+              <p>
+                Ce modèle est pensé pour accueillir des extraits de roman, des descriptions d’univers
+                ou de mécaniques, ou encore des notes d’intention pour un projet hybride
+                (littérature + jeu de rôle + jeu vidéo, par exemple).
+              </p>
+              <p>
+                Tu peux également utiliser des intertitres, des listes, ou des citations pour
+                structurer ta page.
+              </p>
+            </div>
+          </article>
+
+          <!-- Visuel principal -->
+          <div class="flex flex-col gap-4">
+            <div class="arcane-frame overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/159983/night-dark-purple-red-159983.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Illustration principale du projet"
+                class="w-full h-full object-cover" />
+            </div>
+            <p class="text-xs text-silver/70">
+              Légende de l’illustration principale (crédit, contexte, etc.).
+            </p>
+          </div>
+        </div>
+
+        <!-- Galerie d'images secondaire -->
+        <section class="mb-10">
+          <h2 class="section-subtitle mb-4">Galerie d’images</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Image 1 -->
+            <div class="gallery-card aspect-[4/3] overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/316681/pexels-photo-316681.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Image 1 du projet"
+                class="w-full h-full object-cover" />
+            </div>
+            <!-- Image 2 -->
+            <div class="gallery-card aspect-[4/3] overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/1906658/pexels-photo-1906658.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Image 2 du projet"
+                class="w-full h-full object-cover" />
+            </div>
+            <!-- Image 3 -->
+            <div class="gallery-card aspect-[4/3] overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/1121123/pexels-photo-1121123.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Image 3 du projet"
+                class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <p class="text-xs text-silver/70 mt-3">
+            Tu peux remplacer ces images par tes propres visuels (illustrations, captures, cartes...).
+          </p>
+        </section>
+
+        <!-- Vidéo YouTube -->
+        <section class="mb-10">
+          <h2 class="section-subtitle mb-4">Vidéo de présentation</h2>
+          <div class="arcane-panel p-0 overflow-hidden">
+            <div class="aspect-video">
+              <!-- Remplace l’ID par celui de ta vidéo YouTube -->
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Vidéo YouTube"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <p class="text-xs text-silver/70 mt-3">
+            Intègre ici une bande-annonce, un teaser, une présentation de l’univers, ou un extrait
+            de lecture.
+          </p>
+        </section>
+
+        <!-- Liens & téléchargements -->
+        <section class="mb-10">
+          <h2 class="section-subtitle mb-4">Liens & documents</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Bouton PDF -->
+            <a href="files/nom-du-document.pdf" download
+               class="btn-primary flex items-center justify-between">
+              <span>
+                Télécharger le PDF principal
+                <span class="block text-xs text-silver/70">
+                  Extrait, dossier de présentation, fiche de personnage, etc.
+                </span>
+              </span>
+              <span class="text-lg">⇩</span>
+            </a>
+
+            <!-- Lien externe -->
+            <a href="https://example.com" target="_blank" rel="noopener"
+               class="btn-ghost flex items-center justify-between">
+              <span>
+                Voir la ressource externe
+                <span class="block text-xs text-silver/70">
+                  Site associé, page Itch.io, GitHub, wiki, etc.
+                </span>
+              </span>
+              <span class="text-lg">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Navigation retour -->
+        <div class="flex items-center justify-between text-xs text-silver/70 mt-8">
+          <a href="index.html" class="inline-flex items-center gap-2 hover:text-arcaneSoft">
+            ← Retour à la galerie
+          </a>
+          <!-- Tu peux ajouter un lien vers un autre projet ici -->
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-rune/60 bg-night/90">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-[0.75rem] text-silver/60 flex flex-col sm:flex-row gap-3 justify-between items-center">
+        <div>
+          © <span id="year"></span> • Nom de l'artiste
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-arcaneSoft/70">✦</span>
+          <span>Projet : Titre du projet</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

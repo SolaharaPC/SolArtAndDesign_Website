@@ -1,0 +1,158 @@
+/* Styles réutilisables pour tout le site */
+
+.nav-link {
+  @apply text-xs uppercase tracking-[0.25em] text-silver/60 hover:text-arcaneSoft transition-colors;
+}
+
+.nav-link-active {
+  @apply text-arcaneSoft;
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border border-arcaneSoft/60 bg-gradient-to-r from-arcane to-arcaneSoft text-xs uppercase tracking-[0.25em] text-night shadow-arcane hover:from-arcaneSoft hover:to-arcane transition-all;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border border-rune/70 bg-night/60 text-xs uppercase tracking-[0.25em] text-silver/80 hover:border-arcaneSoft hover:text-arcaneSoft transition-all;
+}
+
+.arcane-panel {
+  @apply rounded-2xl border border-rune/80 bg-nightSoft/80 p-4 sm:p-5 shadow-[0_0_35px_rgba(0,0,0,0.6)];
+}
+
+.arcane-frame {
+  @apply rounded-2xl border border-arcaneSoft/40 bg-gradient-to-br from-rune/90 via-nightSoft to-night overflow-hidden shadow-arcane;
+}
+
+.mini-pill {
+  @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rune/60 border border-rune/80;
+}
+
+.section-title {
+  @apply font-serif text-xl sm:text-2xl text-silver mb-1;
+}
+
+.section-subtitle {
+  @apply text-xs uppercase tracking-[0.3em] text-arcaneSoft/70;
+}
+
+.gallery-card {
+  @apply relative rounded-xl border border-rune/80 bg-nightSoft/80 overflow-hidden hover:border-arcaneSoft/70 hover:shadow-arcane transition-all;
+}
+
+.label {
+  @apply block text-xs font-medium text-silver/80 mb-1;
+}
+
+.input {
+  @apply w-full px-3 py-2 rounded-lg bg-nightSoft/80 border border-rune/80 text-sm text-silver placeholder:text-silver/40 focus:outline-none focus:border-arcaneSoft/80 focus:ring-1 focus:ring-arcaneSoft/70;
+}
+
+/* Prose (texte long) */
+.prose p + p {
+  margin-top: 0.75rem;
+}
+
+/* Séparateur brossé façon Guild Wars */
+.separator-brush {
+  position: relative;
+  width: 100%;
+  height: 80px;          /* ajuste si ton PNG est plus haut */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.separator-brush::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/separators/brush-horizontal.png");
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.95;
+}
+
+/* Pour le séparateur du bas : on retourne la brosse */
+.separator-brush--flip::before {
+  transform: scaleY(-1);
+}
+
+/* Optionnel : petit fondu sombre sous/au-dessus */
+.separator-brush-shadow {
+  box-shadow: 0 -40px 60px rgba(0, 0, 0, 0.9) inset;
+}
+
+/* Cartes de projets façon "affiches" Guild Wars */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.project-card:hover .project-card-image img {
+  transform: scale(1.08);
+}
+
+.project-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(17, 11, 30, 0.95) 0%,
+    rgba(17, 11, 30, 0.8) 12%,
+    rgba(10, 7, 6, 0.4) 25%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.project-card-body {
+  position: relative;
+  margin-top: -30px; /* fait remonter le bloc texte sur l'image */
+  padding: 28px 20px 22px;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 11, 30, 0.98),
+    rgba(17, 11, 30, 0.98)
+  );
+  border: 1px solid rgba(155, 108, 241, 0.5);
+  border-top: none;
+  box-shadow:
+    0 25px 40px rgba(17, 11, 30, 0.75),
+    0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+}
+
+.project-card-title {
+  font-family: "Cinzel", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #f5f3e8;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+  margin: 0 0 0.75rem;
+}
+
+.project-card-text {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: left;
+  color: #f5f3e8;
+}

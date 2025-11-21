@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#05040a',
+            nightSoft: '#0b0914',
+            obsidian: '#151021',
+            arcane: '#7b4dc9',
+            arcaneSoft: '#9b6cf1',
+            silver: '#d4d4dd',
+            rune: '#2e2343'
+          },
+          fontFamily: {
+            serif: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'arcane': '0 0 25px rgba(123, 77, 201, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-night text-silver font-sans antialiased">
+  <div class="fixed inset-0 -z-10 bg-gradient-to-b from-night via-nightSoft to-black"></div>
+  <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_top,_#321f52_0,_transparent_60%)]"></div>
+
+  <div class="min-h-screen flex flex-col">
+    <!-- NAV -->
+    <header class="border-b border-rune/60 bg-night/80 backdrop-blur-sm sticky top-0 z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-full border border-arcaneSoft/60 bg-rune/50 flex items-center justify-center shadow-arcane ring-1 ring-arcane/40">
+            <span class="text-arcaneSoft text-lg">☽</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-serif text-silver text-sm tracking-[0.25em] uppercase">Portfolio</div>
+            <div class="text-xs text-arcaneSoft/80">Nom de l'artiste</div>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="nav-link">Galerie</a>
+          <a href="contact.html" class="nav-link nav-link-active">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENU -->
+    <main class="flex-1">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
+        <div class="grid lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] gap-10">
+          <!-- Texte -->
+          <div>
+            <p class="text-xs uppercase tracking-[0.3em] text-arcaneSoft/70 mb-3">Contact</p>
+            <h1 class="font-serif text-3xl sm:text-4xl mb-3 text-silver">
+              Entrer en contact
+            </h1>
+            <p class="text-sm text-silver/80 mb-4">
+              Pour toute question, collaboration, commande, ou simplement pour discuter d’univers
+              narratifs, n’hésite pas à m’écrire via ce formulaire ou directement par email.
+            </p>
+            <div class="arcane-panel mb-6">
+              <p class="text-xs text-silver/80">
+                Email direct : <a href="mailto:adresse@email.com" class="text-arcaneSoft hover:text-arcaneSoft/80">
+                  adresse@email.com
+                </a>
+              </p>
+              <p class="text-xs text-silver/70 mt-2">
+                Tu peux aussi inclure ici tes réseaux (Discord, Twitter/X, etc.) si tu souhaites les afficher.
+              </p>
+            </div>
+          </div>
+
+          <!-- Formulaire -->
+          <div>
+            <form
+              class="arcane-panel space-y-4"
+              method="POST"
+              action="https://formspree.io/f/XXXXX">
+              <!-- Remplace XXXXX par ton ID Formspree si tu veux un vrai envoi d'email -->
+
+              <div>
+                <label class="label" for="name">Nom</label>
+                <input id="name" name="name" type="text" required class="input" />
+              </div>
+
+              <div>
+                <label class="label" for="email">Email</label>
+                <input id="email" name="email" type="email" required class="input" />
+              </div>
+
+              <div>
+                <label class="label" for="subject">Sujet</label>
+                <input id="subject" name="subject" type="text" class="input" />
+              </div>
+
+              <div>
+                <label class="label" for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required class="input resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full justify-center">
+                Envoyer le message
+              </button>
+
+              <p class="text-[0.7rem] text-silver/60">
+                Les messages sont envoyés via un service sécurisé. Tu peux personnaliser cette phrase
+                selon tes besoins.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-rune/60 bg-night/90">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-[0.75rem] text-silver/60 flex flex-col sm:flex-row gap-3 justify-between items-center">
+        <div>
+          © <span id="year"></span> • Nom de l'artiste
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-arcaneSoft/70">✦</span>
+          <span>Merci pour ta visite</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

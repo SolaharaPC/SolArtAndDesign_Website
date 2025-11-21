@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Damnation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#05040a',
+            nightSoft: '#0b0914',
+            obsidian: '#151021',
+            arcane: '#7b4dc9',
+            arcaneSoft: '#9b6cf1',
+            silver: '#d4d4dd',
+            rune: '#2e2343'
+          },
+          fontFamily: {
+            serif: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'arcane': '0 0 25px rgba(123, 77, 201, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-night text-silver font-sans antialiased">
+
+  <!-- BACKGROUND -->
+  <div class="fixed inset-0 -z-10 bg-gradient-to-b from-night via-nightSoft to-black"></div>
+  <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_top,_#321f52_0,_transparent_60%)]"></div>
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- NAV -->
+    <header class="border-b border-rune/60 bg-night/80 backdrop-blur-sm sticky top-0 z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-full border border-arcaneSoft/60 bg-rune/50 flex items-center justify-center shadow-arcane ring-1 ring-arcane/40">
+            <span class="text-arcaneSoft text-lg">☽</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-serif text-silver text-sm tracking-[0.25em] uppercase">Portfolio</div>
+            <div class="text-xs text-arcaneSoft/80">Pascale Coulombe • Sol</div>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="index.html" class="nav-link">Galerie</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+		
+		
+        <!-- HEADER PROJET -->
+        <div class="mb-10">
+          <p class="text-xs uppercase tracking-[0.3em] text-arcaneSoft/70 mb-4">Novella • Dark Fantasy</p>
+          <h1 class="font-serif text-3xl sm:text-4xl text-silver mb-3">
+            <span class="text-arcaneSoft">CYCLES DU SOLEIL :</span> DAMNATION 
+          </h1>
+          <p class="text-silver/80 max-w-2xl">
+		  
+			<p> <br> </p>
+			
+            <p>Dans les Profondeurs, où l'honneur et la fourberie se confondent, 
+			Valistria, héritière d'une Grande Maison, tente de survivre dans ce monde violent et tordu.
+			Mais quand sa propre soeur tente de l'assassiner, elle choisit la retenue. L'abstinence.
+			Un crime d'honneur, plus grave que la trahison.</p>
+			
+			<p> <br> </p>
+
+			<p>Aux abord de Valmora, capitale rayonnante,
+			Solaire accoste dans un pays inconnu traumatisé par la guerre, 
+			où la magie est vue d'un mauvais oeil, pour mener à bien sa quête.
+			Désignée Cendrée par le Phénix, porteuse d'un fragment divin, elle doit trouver la Pure Flamme, avant que sa propre flamme ne s'éteigne.</p>
+			
+			<p> <br> </p>
+			
+			<p>Deux destinées s'entremêlent alors qu'une sombre prophétie est murmurée parmi les Ombres. Celle de la Nuit Éternelle.</p>
+          </p>
+        </div>
+
+        <!-- IMAGE PRINCIPALE -->
+        <div class="arcane-frame overflow-hidden mb-8">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczPvMiXRJjkwbrzlSVKad9zS4NTVbKWykq9atYIE2oCvmiENeBwhNVpO8pqO_y6G_VErUh4mm5Ns8I0my7nNLcfsvAJ64Mq7ihJ0zXNC6Ktb1Y2nkQueKiRsP4K_1wqMqHMG66_vYl4Sr_22JdU3pLJz=w635-h953-s-no-gm?authuser=0"
+            alt="Illustration Valistria"
+            class="w-full h-full object-cover" />
+        </div>
+
+        <!-- TEXTE NARRATIF -->
+        <article class="arcane-panel prose prose-invert prose-sm max-w-none mb-12">
+          <h2 class="font-serif text-xl text-arcaneSoft mb-4">Chapitre — Les Profondeurs</h2>
+
+          <p>
+            Engourdie par le venin, Valistria avançait dans les rues basses de Laoma. Chaque
+            pas lui arrachait une morsure de douleur. Les murs d’ébène semblaient la regarder,
+            complices silencieux de son affaiblissement.
+          </p>
+
+          <p>
+            Son passage avait été repéré. Les Exécutrices la traquaient déjà — et pourtant,
+            une part d’elle refusait encore de plier. Une part d’elle rêvait de briser enfin
+            les chaînes de sa Maison, de fuir Ber’Vhysla et de forger son propre destin dans
+            ces Profondeurs sans lumière.
+          </p>
+
+          <p>
+            Ce projet explore les multiples fragments de son histoire : le poison, la
+            captivité, le doute… mais aussi l’étincelle qui pourrait devenir rébellion.
+          </p>
+        </article>
+
+        <!-- GALERIE D’IMAGES -->
+        <section class="mb-12">
+          <h2 class="section-subtitle mb-4">Galerie d’illustrations</h2>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczMYCSWem1q_UGfslh0D2KDhWK2O53J2dVq6gL7gk3i_jnH3kABe6zjxoxoqOBntb6Zxw6oFbIqILmgdtN8AtPbEKF3_RkZCX40dBZe2i83cWYLN_9nUT5JQMcG8R9zf0j1qmTZl-_CgVVWImQLiFgTA=w1920-h408-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczMOQjTRS2svCUl1_LSZjlboyEeenhDDbXdcbALhCPzAcZ0C0UoU64-reVu7o7E4T9BAfM6jl_OTAAvJ65w1uEfBo1HX_RoBLi06D9x2oCeVC6V3iGVFW8KwQgRYuoQsDz6QIiQP8SWaSDAAp2mp6PMi=w1920-h408-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczMiu4xUv4MrS5xzOFzbdn8Z8_QnK6VNT_cti_Ya0Ur9E1cEI3GnerwxbhMHLHpnfh6THoBdGgNty_F001Vo1N1-GUTyS5JRZsElP3y6dNkoxQ_4Dsoj880swjqOmXhePIzEMzMomtX1DjDQzNw3QVuJ=w953-h953-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="mb-12">
+          <h2 class="section-subtitle mb-4">Vidéo – Lecture ou Bande-annonce</h2>
+          <div class="arcane-panel p-0 overflow-hidden">
+            <div class="aspect-video">
+              <iframe
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Vidéo YouTube"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- DOCUMENTS -->
+        <section class="mb-12">
+          <h2 class="section-subtitle mb-4">Documents & ressources</h2>
+
+          <a href="files/valistria-dossier.pdf" download
+             class="btn-primary inline-flex items-center gap-3">
+            Télécharger le dossier PDF (extraits + notes)
+          </a>
+        </section>
+
+        <!-- RETOUR -->
+        <div class="mt-10">
+          <a href="index.html" class="text-arcaneSoft hover:text-arcaneSoft/80 text-sm">
+            ← Retour à la galerie
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-rune/60 bg-night/90">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-[0.75rem] text-silver/60 flex justify-between">
+        <span>© <span id="year"></span> • Univers drow — Valistria</span>
+        <span class="text-arcaneSoft/70">✦</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
