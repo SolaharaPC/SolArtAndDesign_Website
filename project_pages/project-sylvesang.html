@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sylvesang – Module compatible D&D 2024</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+	<script>
+	tailwind.config = {
+	  theme: {
+		extend: {
+		  colors: {
+			// Sylvesang vibrant
+			leaf: "#3ea66a",
+			leafLight: "#58c784",
+			leafDeep: "#25643c",
+			moss: "#1c3f29",
+			dew: "#9ee8c8",
+
+			// Lueur magique sylvestre
+			fey: "#85ffbe",
+			feyGlow: "#7cfcb8",
+
+			// Sylvesang sombre (gloomy)
+			rot: "#4b1f2f",
+			rotDeep: "#2d0f19",
+			rotBlack: "#14060b",
+			bruise: "#62344a",
+
+			// Déjà existants
+			night: "#05040a",
+			nightSoft: "#0b0914",
+			arcane: "#7b4dc9",
+			silver: "#d4d4dd",
+		  },
+		  boxShadow: {
+			leafGlow: "0 0 65px rgba(62, 166, 106, 0.35)",
+			rotGlow: "0 0 65px rgba(75, 31, 47, 0.45)",
+		  },
+		}
+	  }
+	}
+	</script>
+	<style>
+	@keyframes sporesFloat {
+	  0% { transform: translateY(0); opacity: 0.4; }
+	  50% { opacity: 0.7; }
+	  100% { transform: translateY(-150px); opacity: 0.4; }
+	}
+	</style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="bg-night text-silver font-sans antialiased">
+
+  <!-- Fond global -->
+  <div class="fixed inset-0 -z-10 bg-gradient-to-b from-night via-nightSoft to-black"></div>
+  <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_top,_#321f52_0,_transparent_60%)]"></div>
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- HEADER (adapte si tu utilises les includes) -->
+    <header class="border-b border-rune/60 bg-night/80 backdrop-blur-sm sticky top-0 z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-full border border-arcaneSoft/60 bg-rune/50 flex items-center justify-center shadow-arcane ring-1 ring-arcane/40">
+            <span class="text-arcaneSoft text-lg">☽</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-serif text-silver text-sm tracking-[0.25em] uppercase">Portfolio</div>
+            <div class="text-xs text-arcaneSoft/80">Module D&D 2024</div>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="../index.html" class="nav-link">Galerie</a>
+          <a href="../contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENU -->
+    <main class="flex-1">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- HERO -->
+        <section class="mb-10">
+          <p class="section-subtitle mb-3">Module de campagne • Compatible D&D 2024</p>
+          <h1 class="font-serif text-3xl sm:text-4xl text-silver mb-3">
+            Sylvesang — Secrets de la Forêt Saignante
+          </h1>
+          <p class="text-silver/80 max-w-2xl">
+            <strong>Sylvesang</strong> est un module complet pour D&D 2024, centré sur une forêt
+            ancienne où la sève se mêle au sang. Le livre introduit de nouvelles sous-classes,
+            une classe originale et de nombreuses options pour les MJ et les joueuses qui aiment
+            la fantasy sombre, végétale et mystique.
+          </p>
+        </section>
+				
+				<!-- SECTION SYLVESTRE REWORK -->
+				<section class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 h-[75vh] overflow-hidden mb-24">
+
+				  <!-- C1 : forêt lumineuse -->
+				  <div 
+					class="absolute inset-0 bg-cover bg-center"
+					style="background-image:url('https://images.pexels.com/photos/4827/nature-forest-industry-railroad.jpg?auto=compress');"
+					data-parallax="0.15">
+				  </div>
+
+				  <!-- C2 : brume émeraude vivante -->
+				  <div 
+					class="absolute inset-0 mix-blend-screen opacity-70"
+					style="background: radial-gradient(circle at center, rgba(62, 166, 106, 0.28), transparent 65%);">
+				  </div>
+
+				  <!-- C3 : spores lumineuses (tiny particles) -->
+				  <div class="absolute inset-0 pointer-events-none">
+					<canvas id="sylveParticles" class="w-full h-full"></canvas>
+				  </div>
+
+				  <!-- C4 : feuilles / vignes (parallaxe) -->
+				  <img src="https://www.transparenttextures.com/patterns/green-fibers.png"
+					   class="absolute inset-0 opacity-20 mix-blend-overlay"
+					   data-parallax="0.35">
+
+				  <!-- TEXTE -->
+				  <div class="absolute inset-0 flex items-center justify-center z-20 px-6">
+					<h2 class="font-serif text-4xl sm:text-5xl text-dew drop-shadow-[0_0_30px_rgba(62,166,106,0.7)] text-center">
+					  Les Secrets Vivants de Sylvesang
+					</h2>
+				  </div>
+				</section>
+
+				<script>
+				// SPORES LUMINEUSES
+				const canvas = document.getElementById("sylveParticles");
+				if (canvas) {
+				  const ctx = canvas.getContext("2d");
+				  let w, h;
+				  const spores = [];
+				  const count = 80;
+
+				  const init = () => {
+					w = canvas.width = canvas.offsetWidth;
+					h = canvas.height = canvas.offsetHeight;
+					spores.length = 0;
+					for (let i = 0; i < count; i++) {
+					  spores.push({
+						x: Math.random() * w,
+						y: Math.random() * h,
+						r: Math.random() * 2 + 0.5,
+						s: Math.random() * 0.4 + 0.1
+					  });
+					}
+				  };
+
+				  window.addEventListener("resize", init);
+				  init();
+
+				  const animate = () => {
+					ctx.clearRect(0, 0, w, h);
+					ctx.fillStyle = "rgba(158,232,200,0.7)";
+					spores.forEach(p => {
+					  ctx.beginPath();
+					  ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+					  ctx.fill();
+					  p.y -= p.s;
+					  if (p.y < -2) p.y = h + 2;
+					});
+					requestAnimationFrame(animate);
+				  };
+				  animate();
+				}
+				</script>
+
+				
+        <!-- IMAGE HERO FULL-WIDTH -->
+        <section class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 h-[60vh] mb-16 overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            alt="Forêt sanglante – Sylvesang"
+            class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-night via-night/40 to-transparent"></div>
+          <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center px-4">
+            <h2 class="font-serif text-2xl sm:text-3xl text-silver drop-shadow-[0_0_18px_rgba(123,77,201,0.9)]">
+              Un module pour enraciner vos histoires dans la sève et le sang
+            </h2>
+          </div>
+        </section>
+
+
+        <!-- CAROUSEL SYLVESANG — STYLE S1 GW2 -->
+		<section class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 h-[80vh] overflow-hidden mb-24" data-sylve-carousel>
+
+		  <!-- TRACK -->
+		  <div class="flex h-full transition-transform duration-700 ease-out" data-sylve-track>
+
+			<!-- ======== SLIDE 1 ======== -->
+			<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+			  <!-- IMAGE HÉRO À GAUCHE -->
+			  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+				<img 
+				  src="https://images.pexels.com/photos/3404200/pexels-photo-3404200.jpeg?auto=compress&w=1600"
+				  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+				/>
+			  </div>
+
+			  <!-- TEXTE À DROITE -->
+			  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+				<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+				  01 — Sous-classe
+				</h3>
+
+				<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+				  Gardien de Sève
+				</h2>
+
+				<p class="text-leafLight/80 leading-relaxed text-lg">
+				  Protecteurs ancestraux nourris par la sève vivante, les Gardiens de Sève 
+				  canalisent la force de la forêt pour défendre leurs alliés et terrasser leurs ennemis.
+				</p>
+
+				<div class="flex gap-3 mt-6">
+				  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+					   class="w-28 h-20 object-cover rounded shadow-md">
+				  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+					   class="w-28 h-20 object-cover rounded shadow-md">
+				</div>
+
+			  </div>
+			</article>
+
+			<!-- === TU AJOUTERAS D’AUTRES SLIDES ICI === -->
+
+		  </div>
+
+		  <!-- CONTRÔLES -->
+		  <button data-sylve-prev class="absolute left-4 top-1/2 -translate-y-1/2 text-leafLight text-5xl hover:scale-110 transition">
+			‹
+		  </button>
+
+		  <button data-sylve-next class="absolute right-4 top-1/2 -translate-y-1/2 text-leafLight text-5xl hover:scale-110 transition">
+			›
+		  </button>
+
+		</section>
+
+
+        
+
+		
+						<!-- SECTION GLOOMY REWORK -->
+						<section class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 h-[75vh] overflow-hidden my-24">
+
+						  <!-- Couche 1 : forêt noire -->
+						  <div 
+							class="absolute inset-0 bg-cover bg-center"
+							style="background-image:url('https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg?auto=compress');"
+							data-parallax="0.15"></div>
+
+						  <!-- Couche 2 : brume sanguine ternie -->
+						  <div class="absolute inset-0 opacity-60 mix-blend-multiply"
+							   style="background: radial-gradient(circle, rgba(75,31,47,0.35), transparent 70%);"></div>
+
+						  <!-- Couche 3 : sève noire qui pulse -->
+						  <div class="absolute inset-0 opacity-35 mix-blend-color-burn animate-[pulseRot_6s_ease-in-out_infinite] bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]"></div>
+
+						  <!-- TEXTE -->
+						  <div class="absolute inset-0 flex items-center justify-center z-30 px-6">
+							<h2 class="font-serif text-4xl sm:text-5xl text-bruise drop-shadow-[0_0_45px_rgba(75,31,47,0.9)] text-center">
+							  Là où la forêt saigne et se fissure
+							</h2>
+						  </div>
+						</section>
+
+						<style>
+						@keyframes pulseRot {
+						  0%, 100% { opacity: 0.25; filter: blur(0px); }
+						  50% { opacity: 0.55; filter: blur(4px); }
+						}
+						</style>
+
+        <!-- SECTION FEATURES -->
+        <section class="mb-16">
+          <h2 class="section-subtitle mb-4">Contenu du module Sylvesang</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/70">
+              <h3 class="font-serif text-lg mb-2">Pour les personnages</h3>
+              <ul class="list-disc list-inside text-sm text-silver/90 space-y-1">
+                <li>Une nouvelle classe complète : Émissaire de Sylvesang.</li>
+                <li>Plusieurs sous-classes pour des classes existantes (barde, guerrier, rôdeur, druide, etc.).</li>
+                <li>De nouveaux dons, sorts et objets magiques liés à la forêt sanglante.</li>
+              </ul>
+            </div>
+            <div class="arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/70">
+              <h3 class="font-serif text-lg mb-2">Pour les MJ</h3>
+              <ul class="list-disc list-inside text-sm text-silver/90 space-y-1">
+                <li>Une région détaillée, ses factions, ses menaces et ses mystères.</li>
+                <li>Un bestiaire thématique (bêtes, esprits, aberrations sylvestres).</li>
+                <li>Des accroches de scénarios, tables de rumeurs et complications organiques.</li>
+              </ul>
+            </div>
+            <div class="arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/70">
+              <h3 class="font-serif text-lg mb-2">Format & outils</h3>
+              <ul class="list-disc list-inside text-sm text-silver/90 space-y-1">
+                <li>PDF haute résolution compatible impression.</li>
+                <li>Mise en page pensée pour la consultation sur tablette.</li>
+                <li>Signets, index, et renvois internes pour navigation rapide.</li>
+              </ul>
+            </div>
+            <div class="arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/70">
+              <h3 class="font-serif text-lg mb-2">Ambiance</h3>
+              <ul class="list-disc list-inside text-sm text-silver/90 space-y-1">
+                <li>Dark fantasy végétale, mélancolique, parfois horrifique.</li>
+                <li>Thèmes de pactes, d’héritage, de culpabilité et de rédemption.</li>
+                <li>Idéal pour des campagnes longues ou des arcs narratifs ciblés.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+		
+				<!-- CAROUSEL SYLVESANG — STYLE S1 GW2 -->
+				<section class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 h-[80vh] overflow-hidden mb-24" data-sylve-carousel>
+
+				  <!-- TRACK -->
+				  <div class="flex h-full transition-transform duration-700 ease-out" data-sylve-track>
+
+					<!-- ======== SLIDE 1 ======== -->
+					<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+					  <!-- IMAGE HÉRO À GAUCHE -->
+					  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+						<img 
+						  src="https://lh3.googleusercontent.com/pw/AP1GczP2KJ_UzuuINM3kxU6_Nk6QgM4EHvWxfB4oVWdeZHXyZrRgjHMv8GupfKaPJw8pHAFjorIRYitMyYVxIddv7oPdtXBJtbsZKnswTdQQM_VVWFxCYuZIZCd76OCBzfYuCh4ev3qV-J7T4TlXVBbs9z5a=w953-h953-s-no-gm?authuser=0"
+						  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+						/>
+					  </div>
+
+					  <!-- TEXTE À DROITE -->
+					  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+						<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+						  Nouvelle Classe
+						</h3>
+
+						<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+						  Sylvesang
+						</h2>
+
+						<p class="text-leafLight/80 leading-relaxed text-lg">
+						  Protecteurs ancestraux nourris par la sève vivante, les Gardiens de Sève 
+						  canalisent la force de la forêt pour défendre leurs alliés et terrasser leurs ennemis.
+						</p>
+
+						<div class="flex gap-3 mt-6">
+						  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						</div>
+
+					  </div>
+					</article>
+					
+					<!-- ======== SLIDE 1 ======== -->
+					<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+					  <!-- IMAGE HÉRO À GAUCHE -->
+					  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+						<img 
+						  src="https://lh3.googleusercontent.com/pw/AP1GczN-U4aj7bxkLCP5ljPOa0WMMv3lfYaCbKTTLpTO5lyl015MM2ZJKZ5OWpoo5T8LSHBk2IvsU4bgVGO9WKeorfKVsMlzIufFhkTdemUv3hFhtXWQrZ1d12AH-dSDB96OMHa-1PmOJtEm9JJY46jy8fY6=w953-h953-s-no-gm?authuser=0"
+						  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+						/>
+					  </div>
+
+					  <!-- TEXTE À DROITE -->
+					  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+						<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+						  Sylvesang — Archétype
+						</h3>
+
+						<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+						  Source de vie
+						</h2>
+
+						<p class="text-leafLight/80 leading-relaxed text-lg">
+						  Vous êtes bercé des énergies naturelles insufflant la vie. En vous se trouve une source d'énergie similaire aux grands chênes enchantés. Bêtes et plantes semblent vous vouer une admiration et vous possédez un don pour les appeller à suivre votre volonté. Tel un grand chêne enchanté, les Royaumes Féériques  semble vous avoir assigné un gardien loyal qui vous suit dans vos aventures.
+						</p>
+
+						<div class="flex gap-3 mt-6">
+						  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						</div>
+
+					  </div>
+					</article>
+					
+					<!-- ======== SLIDE 2 ======== -->
+					<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+					  <!-- IMAGE HÉRO À GAUCHE -->
+					  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+						<img 
+						  src="https://lh3.googleusercontent.com/pw/AP1GczNeFMPh5_esece6OtrnFqES6KRUMlV0Wu7W-FOZNyBNswTVyVd0CgledKqfjIQthmFqEv9ZzOGmvbOpKSQ-7Ayothi9b_h_M2pecP7y-w6GPhLig7bFTGfnIdyml6Zc7LSy_5Mdxc2Gu4zbmQjAMasw=w953-h953-s-no-gm?authuser=0"
+						  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+						/>
+					  </div>
+
+					  <!-- TEXTE À DROITE -->
+					  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+						<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+						  01 — Sous-classe
+						</h3>
+
+						<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+						  Source de tromperie
+						</h2>
+
+						<p class="text-leafLight/80 leading-relaxed text-lg">
+						  Protecteurs ancestraux nourris par la sève vivante, les Gardiens de Sève 
+						  canalisent la force de la forêt pour défendre leurs alliés et terrasser leurs ennemis.
+						</p>
+
+						<div class="flex gap-3 mt-6">
+						  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						</div>
+
+					  </div>
+					</article>
+					
+					<!-- ======== SLIDE 3 ======== -->
+					<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+					  <!-- IMAGE HÉRO À GAUCHE -->
+					  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+						<img 
+						  src="https://lh3.googleusercontent.com/pw/AP1GczNowZRdvq_8DUvat0NWbqFDctHX3V5vZs_RCyx8Jz79oVrCrskdXAsX4ZighKFzu7fkN8QIRdIUcGB8EGGcUlH7Kxl5fTwJAgU2iE4UOi0vUx4bkaCNQU5nFBxzAVMtMUtLgHtBhowdqftIC0myD7nL=w953-h953-s-no-gm?authuser=0"
+						  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+						/>
+					  </div>
+
+					  <!-- TEXTE À DROITE -->
+					  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+						<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+						  01 — Sous-classe
+						</h3>
+
+						<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+						  Source de la lame
+						</h2>
+
+						<p class="text-leafLight/80 leading-relaxed text-lg">
+						  Protecteurs ancestraux nourris par la sève vivante, les Gardiens de Sève 
+						  canalisent la force de la forêt pour défendre leurs alliés et terrasser leurs ennemis.
+						</p>
+
+						<div class="flex gap-3 mt-6">
+						  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						</div>
+
+					  </div>
+					</article>
+					
+					<!-- ======== SLIDE 4 ======== -->
+					<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+					  <!-- IMAGE HÉRO À GAUCHE -->
+					  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+						<img 
+						  src="https://lh3.googleusercontent.com/pw/AP1GczO9vkKYezSMNQOOj4xPhUAuKcY9GnEAd9sbokwt72YmsWOyi_PXLK1uPgrKRh3lM_6fKUWjivDdNfTa9LyoJ-K9TN27FAvYSjyj2iQ2m7-wQjjv2M5QFlXUWhomI9G4-Ofy0mdV9Bx1So7ktvAF863_=w953-h953-s-no-gm?authuser=0"
+						  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+						/>
+					  </div>
+
+					  <!-- TEXTE À DROITE -->
+					  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+						<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+						  01 — Sous-classe
+						</h3>
+
+						<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+						  Source Étrange
+						</h2>
+
+						<p class="text-leafLight/80 leading-relaxed text-lg">
+						  Protecteurs ancestraux nourris par la sève vivante, les Gardiens de Sève 
+						  canalisent la force de la forêt pour défendre leurs alliés et terrasser leurs ennemis.
+						</p>
+
+						<div class="flex gap-3 mt-6">
+						  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						</div>
+
+					  </div>
+					</article>
+					
+					<!-- ======== SLIDE 5 ======== -->
+					<article class="relative min-w-full h-full flex items-center" data-sylve-slide>
+
+					  <!-- IMAGE HÉRO À GAUCHE -->
+					  <div class="absolute left-0 top-0 h-full w-[55vw] flex items-center justify-center">
+						<img 
+						  src="https://lh3.googleusercontent.com/pw/AP1GczMCKewrWCjX6DUpU0B7BSa2hzXGs9NDYuli_yyRKeOJNEinpDnLV5MtcyO7EgM0XHWO2Ri62z_zjNk65hDtwF66YyXS-5ymzQRP4mv_0EO6u72ALb9BXfjPH2twDxC2QbrT9OGZCZlFcYmIda-EnRU0=w953-h953-s-no-gm?authuser=0"
+						  class="h-[90%] object-contain drop-shadow-[0_0_35px_rgba(0,0,0,0.6)]"
+						/>
+					  </div>
+
+					  <!-- TEXTE À DROITE -->
+					  <div class="absolute right-0 top-0 h-full w-[45vw] p-12 flex flex-col justify-center">
+
+						<h3 class="text-leafLight font-medium tracking-wider text-sm mb-3">
+						  01 — Sous-classe
+						</h3>
+
+						<h2 class="font-serif text-5xl text-dew drop-shadow-[0_0_25px_rgba(62,166,106,0.6)] mb-6 leading-tight">
+						  Source de l’Obscure
+						</h2>
+
+						<p class="text-leafLight/80 leading-relaxed text-lg">
+						  Protecteurs ancestraux nourris par la sève vivante, les Gardiens de Sève 
+						  canalisent la force de la forêt pour défendre leurs alliés et terrasser leurs ennemis.
+						</p>
+
+						<div class="flex gap-3 mt-6">
+						  <img src="https://images.pexels.com/photos/675267/pexels-photo-675267.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						  <img src="https://images.pexels.com/photos/1460880/pexels-photo-1460880.jpeg?auto=compress&w=600"
+							   class="w-28 h-20 object-cover rounded shadow-md">
+						</div>
+
+					  </div>
+					</article>
+
+					<!-- === TU AJOUTERAS D’AUTRES SLIDES ICI === -->
+
+				  </div>
+
+				  <!-- CONTRÔLES -->
+				  <button data-sylve-prev class="absolute left-4 top-1/2 -translate-y-1/2 text-leafLight text-5xl hover:scale-110 transition">
+					‹
+				  </button>
+
+				  <button data-sylve-next class="absolute right-4 top-1/2 -translate-y-1/2 text-leafLight text-5xl hover:scale-110 transition">
+					›
+				  </button>
+
+				</section>
+						<!-- SECTION KICKSTARTER MISE EN AVANT -->
+						<section class="relative left-1/2 right-1/2 w-screen -translate-x-1/2 py-20 overflow-hidden">
+
+						  <!-- Fond forêt automnale -->
+						  <div class="absolute inset-0 bg-cover bg-center"
+							   style="background-image:url('https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress');"
+							   data-parallax="0.2"></div>
+
+						  <!-- Lumière dorée chaleureuse -->
+						  <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(255,205,120,0.45),_transparent_70%)] mix-blend-screen"></div>
+
+						  <!-- Texture feuilles tombantes -->
+						  <div class="absolute inset-0 opacity-15 bg-[url('https://www.transparenttextures.com/patterns/leaves.png')]
+									  animate-[autumnDrift_40s_linear_infinite]"></div>
+
+						  <div class="relative max-w-5xl mx-auto px-6 sm:px-10">
+
+							<h2 class="font-serif text-3xl sm:text-4xl text-amber-200 drop-shadow-lg text-center mb-6">
+							  Soutenir Sylvesang
+							</h2>
+
+							<p class="text-amber-100/80 max-w-3xl mx-auto text-center mb-8">
+							  Grâce à vos contributions, <strong>Sylvesang</strong> deviendra un module complet doté
+							  d’illustrations originales, de cartes détaillées et d’un artbook annexe.
+							</p>
+
+							<!-- Logos & liens -->
+							<div class="grid sm:grid-cols-3 gap-8">
+
+							  <!-- Amazon -->
+							  <a href="#" class="group p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-amber-300/40 hover:shadow-[0_0_25px_rgba(255,205,120,0.4)] transition flex flex-col items-center text-center">
+								<img src="https://www.svgrepo.com/download/303540/amazon-com-logo.svg" class="h-10 mb-4">
+								<span class="text-amber-200 font-serif">Amazon</span>
+							  </a>
+
+							  <!-- DMsGuild -->
+							  <a href="#" class="group p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-amber-300/40 hover:shadow-[0_0_25px_rgba(255,205,120,0.4)] transition flex flex-col items-center text-center">
+								<img src="http://www.dmsguild.com/images/site_resources/DMsGuildProductLogoLarge.png" class="h-12 mb-4">
+								<span class="text-amber-200 font-serif">DM’s Guild</span>
+							  </a>
+
+							  <!-- Kickstarter -->
+							  <a href="#" class="group p-6 bg-[#05ce78] text-black font-semibold rounded-xl hover:brightness-110 transition flex flex-col items-center text-center shadow-[0_0_18px_rgba(5,206,120,0.35)]">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Kickstarter_logo_2019.svg" class="h-6 mb-3">
+								<span class="font-serif">Kickstarter</span>
+							  </a>
+
+							</div>
+
+						  </div>
+						</section>
+
+						<style>
+						@keyframes autumnDrift {
+						  0% { transform: translateY(0); }
+						  100% { transform: translateY(-800px); }
+						}
+						</style>
+
+        <!-- SECTION BOUTIQUES (AMAZON / DM'S GUILD / PDF) -->
+        <section class="mb-16">
+          <h2 class="section-subtitle mb-4">Où trouver Sylvesang ?</h2>
+          <p class="text-silver/80 mb-6 max-w-2xl text-justify">
+            <strong>Sylvesang</strong> sera disponible en format PDF sur plusieurs plateformes. Vous
+            pourrez ainsi choisir l’écosystème qui correspond le mieux à votre manière de jouer, de
+            préparer vos parties ou de collectionner vos modules favoris.
+          </p>
+
+          <div class="grid sm:grid-cols-3 gap-6 items-stretch">
+            <!-- Amazon -->
+            <a href="https://www.amazon.com/"
+               target="_blank"
+               class="group arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/80 flex flex-col items-center justify-center text-center hover:border-arcaneSoft hover:shadow-arcane transition">
+              <img src="https://www.svgrepo.com/download/303540/amazon-com-logo.svg"
+                   alt="Amazon"
+                   class="h-10 mb-3">
+              <h3 class="font-serif text-sm mb-1">Amazon</h3>
+              <p class="text-xs text-silver/80">
+                Version numérique, accessible facilement sur liseuse, tablette ou ordinateur.
+              </p>
+            </a>
+
+            <!-- DMs Guild -->
+            <a href="https://www.dmsguild.com/"
+               target="_blank"
+               class="group arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/80 flex flex-col items-center justify-center text-center hover:border-arcaneSoft hover:shadow-arcane transition">
+              <img src="http://www.dmsguild.com/images/site_resources/DMsGuildProductLogoLarge.png"
+                   alt="Dungeon Masters Guild"
+                   class="h-12 mb-3">
+              <h3 class="font-serif text-sm mb-1">Dungeon Masters Guild</h3>
+              <p class="text-xs text-silver/80">
+                Pour rejoindre l’écosystème officiel 5e, aux côtés d’autres créateurs et créatrices.
+              </p>
+            </a>
+
+            <!-- PDF direct / autre -->
+            <div class="arcane-panel p-5 border border-rune/70 rounded-xl bg-nightSoft/80 flex flex-col items-center justify-center text-center">
+              <div class="w-10 h-10 rounded-full border border-arcaneSoft/60 flex items-center justify-center mb-3">
+                <span class="text-arcaneSoft text-lg">PDF</span>
+              </div>
+              <h3 class="font-serif text-sm mb-1">Version PDF autonome</h3>
+              <p class="text-xs text-silver/80">
+                Téléchargement direct pour archivage, annotation et intégration à vos propres outils.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        
+
+        <!-- RETOUR -->
+        <div class="mt-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+          <a href="../index.html" class="text-arcaneSoft hover:text-arcaneSoft/80 text-sm">
+            ← Retour à la galerie
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FOOTER SIMPLE (ou remplace par ton include) -->
+    <footer class="border-t border-rune/60 bg-night/90">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-[0.75rem] text-silver/60 flex justify-between">
+        <span>© <span id="year"></span> • Sylvesang • Module D&D 2024</span>
+        <span class="text-arcaneSoft/70">✦</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- CAROUSEL LOGIC (pour les deux carousels) -->
+  
+	<script>
+	document.querySelectorAll("[data-sylve-carousel]").forEach(section => {
+	  const track = section.querySelector("[data-sylve-track]");
+	  if (!track) return;
+
+	  const slides = Array.from(section.querySelectorAll("[data-sylve-slide]"));
+	  if (slides.length === 0) return;
+
+	  let index = 0;
+
+	  function update(){
+		track.style.transform = `translateX(-${index * 100}%)`;
+	  }
+
+	  const prevBtn = section.querySelector("[data-sylve-prev]");
+	  const nextBtn = section.querySelector("[data-sylve-next]");
+
+	  if (prevBtn) {
+		prevBtn.addEventListener("click", () => {
+		  index = (index - 1 + slides.length) % slides.length;
+		  update();
+		});
+	  }
+
+	  if (nextBtn) {
+		nextBtn.addEventListener("click", () => {
+		  index = (index + 1) % slides.length;
+		  update();
+		});
+	  }
+
+	  // init
+	  update();
+	});
+	</script>
+
+</body>
+</html>

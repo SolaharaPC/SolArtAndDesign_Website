@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>TurnOrder – Pascale Coulombe • Sol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#05040a',
+            nightSoft: '#0b0914',
+            obsidian: '#151021',
+            arcane: '#7b4dc9',
+            arcaneSoft: '#9b6cf1',
+            silver: '#d4d4dd',
+            rune: '#2e2343'
+          },
+          fontFamily: {
+            serif: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'arcane': '0 0 25px rgba(123, 77, 201, 0.45)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+
+
+<body class="bg-night text-silver font-sans antialiased">
+
+  <!-- Background -->
+  <div class="fixed inset-0 -z-10 bg-gradient-to-b from-night via-nightSoft to-black"></div>
+  <div class="fixed inset-0 -z-10 opacity-40 pointer-events-none bg-[radial-gradient(circle_at_top,_#321f52_0,_transparent_60%)]"></div>
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- NAV -->
+    <header class="border-b border-rune/60 bg-night/80 backdrop-blur-sm sticky top-0 z-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        
+        <a href="../index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-full border border-arcaneSoft/60 bg-rune/50 flex items-center justify-center shadow-arcane ring-1 ring-arcane/40">
+            <span class="text-arcaneSoft text-lg">☽</span>
+          </div>
+          <div class="leading-tight">
+            <div class="font-serif text-silver text-sm tracking-[0.25em] uppercase">Portfolio</div>
+            <div class="text-xs text-arcaneSoft/80">Pascale Coulombe • Sol</div>
+          </div>
+        </a>
+
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="../index.html" class="nav-link">Galerie</a>
+          <a href="../contact.html" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Header Projet -->
+        <div class="mb-10">
+		  <p class="text-xs uppercase tracking-[0.3em] text-arcaneSoft/70 mb-4">Projet technique • Addon World of Warcraft</p>
+          
+          <h1 class="font-serif text-3xl sm:text-4xl text-silver mb-3">
+		  
+		  <span class="text-arcaneSoft">TurnOrder </BR> </span> Système d’Initiative & Cartes de Combat 
+            
+          </h1>
+          <p class="text-silver/80 max-w-2xl text-justify">
+		  </br>
+            TurnOrder est un addon avancé pour World of Warcraft, conçu pour les joueurs et les maîtres de jeu cherchant une expérience inspirée du jeu de rôle papier : gestion d’initiative, cartes de personnages visuelles, incanation roleplay de NPC, outils de maître de jeu et bien plus encore, le tout en synchronisation réseau entre les joueurs et le maître de jeu.
+          </p>
+        </div>
+
+        
+								
+							
+							<!-- SECTION PARALLAXE GW2/DROW -->
+							<section class="relative w-full h-[80vh] -translate-x-1/4 overflow-hidden my-28 w-screen object-cover">
+
+							  
+							  <div 
+								class="absolute inset-0 opacity-50"
+								style="background: radial-gradient(circle at center, rgba(123,77,201,0.55), transparent 40%);"
+								data-parallax="0.0">
+							  </div>
+							  
+							  <img 
+								src="https://lh3.googleusercontent.com/pw/AP1GczNcXZvkrjRPvN-lL8ve3BaQY_732gJavg5tjei5_u2rfazZaKwxUDgbiJyRMLijtVsEX5aGNjFWGcmChUlB_Bn6yY1JvJeCYrkYTdQw6xUAy9V5Ayt6U-bnvV2Lf9MgYxDlYHYL_04YUE00BaIo1PV1=w1800-h900-s-no-gm?authuser=0"
+								class="absolute left-0 top-0 h-[100%] opacity-100 "
+								data-parallax-x="0.5"
+							  />
+
+							  <img 
+								src="https://lh3.googleusercontent.com/pw/AP1GczOJnz-TZv2hd5REEt4x9k68sKrwQK_pMDpXUjqL7CH-mig-AwUZngc1yPOH65ciXF6UWBrG5-k1tm8_M4V9kfgyYXsbeFqTRkesXCEs4bagyd6BAR-jeN7hIAjDsz5m6DiZwXgFHmu7CwteC_ld3J9X=w1800-h900-s-no-gm?authuser=0"
+								class="absolute right-0 top-0 h-[90%] opacity-100 "
+								data-parallax-x="-0.5"
+							  />
+							  
+							  <!-- <img  -->
+								<!-- src="https://lh3.googleusercontent.com/pw/AP1GczN63qRdpqgkPvlvQsJguCUItzIbQLoKnCIlS873nmx5Tl8u-ROSb8Bu3lG86tW50rGi0GsWDFIbHSk3NsZ4kEX-njG2TU3EOhA1EWKXETf335G5NTrV9fU5-HFB94b6_jfSitc2gotX00PHSQL8Bpfw=w900-h900-s-no-gm?authuser=0" -->
+								<!-- class="absolute left-0 top-0 h-[100%] opacity-100 mix-blend-color-dodge" -->
+								<!-- data-parallax-x="0.3" -->
+							  <!-- /> -->
+
+							  <!-- <img  -->
+								<!-- src="https://lh3.googleusercontent.com/pw/AP1GczM5w0_Fln88Su1pHRpCZF-zpJf1LkEvVNA8vP1HRT2pJlqqDAzweuD1zZtkP_B0w--sEGQMrHRv-ar-ALNjPfVNErg0_2vQi7Jbw_hvG3QPfZbOqiz4LCLRl_y-xBi5BVFn7BFXBa9MI23ja-Ko6tXE=w900-h900-s-no-gm?authuser=0" -->
+								<!-- class="absolute right-0 top-0 h-[100%] opacity-100 mix-blend-color-dodge" -->
+								<!-- data-parallax-x="-0.3" -->
+							  <!-- /> -->
+
+							  <!-- TEXTE CENTRÉ -->
+							  <div class="relative z-10 h-full flex items-center justify-center">
+								<h2 class="font-serif text-4xl md:text-6xl text-silver text-center drop-shadow-[0_0_30px_rgba(123,77,201,0.7)] leading-snug">
+								  Un Addon réfléchi<br>
+								  <span class="text-arcaneSoft">une véritable Interface RPG</span>
+								</h2>
+							  </div>
+							  
+								<div class="relative z-2 left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+								  <img src="https://lh3.googleusercontent.com/pw/AP1GczNH0qVrvFvQg3t8qCtEmKAVbFtsxLGyK31eWF-wWGHXNwQaKwzTrg7ed9NrR7K-9ghyUXWOCG7RUrG1lZ0sTTy-Ff9SGZHDQOrk27OHFLyFjTuy1RJ0RAEbipYcMv4uUGsHp11s3cME3KGvFDmttbHU=w1920-h900-s-no-gm?authuser=0" class="w-screen object-cover">
+								</div>
+								
+							</section>
+
+
+
+        <!-- Section technique -->
+        <article class="arcane-panel prose prose-invert prose-sm max-w-none mb-12 text-justify">
+
+          <h2 class="font-serif text-xl text-arcaneSoft mb-4 ">Présentation des features</h2>
+          <p>
+            TurnOrder crée un véritable <strong>carrousel de cartes</strong> directement dans 
+            l’interface de WoW. Chaque carte représente un personnage-joueur, un ennemi ou un NPC, avec :
+          </p>
+				</br>
+          <ul>
+            <li>• Portrait 3D</li>
+            <li>• Barre de vie, Boucliers et États Personnalisés</li>
+            <li>• Nom et icône (marqueur de raid) pour identifier les personnages présents</li>
+            <li>• Défilement d’initiative (tour par tour)</li>
+            <li>• Un interface utilisateur intuitif</li>
+			<li>• Notifie les joueur lorsque leur tour est arrivé de jouer</li>
+			<li>• Interface épurée pour les joueurs</li>
+          </ul>
+				</br></br>
+				
+				<!-- Image principale -->
+        <div class="arcane-frame overflow-hidden mb-8">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczOokXimY6dU2MRBpz0nM_roNmfbktyOBXvJqY0IGZTYKomKqqumCJjsPy-c3xPTwniA_OOZhY4ks-Tt7deYBmG2voxtmc3WfznxEqHuRtdygn_37t85b0NNTV-k9VS12UzNR20zCkcXMaFfZr1Fu7m4=w1299-h326-s-no-gm?authuser=0"
+            alt="TurnOrder Addon"
+            class="w-full h-full object-cover" />
+        </div>
+			<!-- Image principale -->
+        <div class="arcane-frame overflow-hidden mb-8">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczNX-s_meUv2HlrAAuxaMQzC-RonWt86xARVc49frSZfQ0dc6nmHs6HnOHnZwoh5_pd2m-4tgFuGiPVAfn0G66BAfG-C7YefnaZP1sMJa8KYpW4dsVNxeE52q9il2SLapslUGH19AeLSDWCQTdD9qBEG=w1133-h269-s-no-gm?authuser=0"
+            alt="TurnOrder Addon"
+            class="w-full h-full object-cover" />
+        </div>
+		</br>
+          <h2 class="font-serif text-xl text-arcaneSoft mb-4">Outils Maître de Jeu</h2>
+          <p>
+            Un panneau dédié permet au MJ d’appliquer des états (saignement, brûlure, etc.), gérer 
+            l’initiative, rendre certaines cartes invisibles aux yeux des joueurs, envoyer des messages incarnant les personnages dans le chat, 
+            et modifier en temps réel les données affichées sur l'interface de ses joueurs.
+          </p>
+				</br>
+          <h2 class="font-serif text-xl text-arcaneSoft mb-4">Synchronisation</h2>
+          <p>
+            TurnOrder fonctionne en <strong>réseau local WoW</strong> :  
+            Le Maître du Jeu contrôle la session, les joueurs reçoivent et mettent à jour les cartes automatiquement, pour une prise en main sans prise de tête pour les joueurs.
+          </p>
+		  </br></br>
+		  
+		  <!-- Galerie Screenshots -->
+        <section class="mb-12">
+          <!-- <h2 class="section-subtitle mb-4">Captures de l’interface</h2> -->
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczN7l2T9AVYglr3cRmF8tPFXIwebwDwJeCdPn7hGdIHHQ56Ywgnu9tro6HYb5V4Vg_mZFAypRwkrjAcRpQiT2OX18NWa1G__tc6op87Bxro5LDvmunu0_Mbe9DAI1fvfmazYMaV6qfkgVejiHqs7fho2=w674-h607-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczM5jmchLfaeApj1FrjlFJ_F_ua3Knz09fdioc6wv7_Vh-2CBr1QQzQMyOp-GvvIW7gwUcjOSAad3otAXMEc9pqtbr8hSU6zKUazoH8HnzV9CFZzBcLjva23IxYQZuF1UKdKxmue3n-oJ9iRyDgqomwV=w157-h252-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczNUG_YFKALteI7CvQEgzGStf2YwIKuOLCEi5AYWnW57jItyRQfkHQm3--usXBFd4PgJ9W0u8Vt2PWiMBEU-KZTm_K55y-kmzcelGAn4i9ILUMUxAVN41zEie66DBtUZs7dUSI-0ZdpRrLtDsYMkzaFc=w369-h77-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </section>
+		  
+				</br>
+          <h2 class="font-serif text-xl text-arcaneSoft mb-4">Système de Sauvegarde</h2>
+          <p>
+            Une session de Turn Order peut être sauvegardée localement par tous les joueurs présents dans la session. Le maître de jeu peut charger une session qu'il a précédemment sauvegardé pour rendre aisée le reprise d'une session interrompue et réduire au maximum les frictions.	
+          </p>
+				</br>
+          <h2 class="font-serif text-xl text-arcaneSoft mb-4">Bibliothèque de NPC</h2>
+          <p>
+            TurnOrder vous laisse la pleine libertée de construire votre banque de Personnages, et vous offre tous les outils pour préparer vos sessions de combat à l'avance. Votre bibliothèque est sauvegardée et de robustes options de filtres et de recherche sont mis à votre disposition. Ajouter un personnage au Turn Order depuis votre bibliothèque est aussi simple que deux clics. 
+			</br></br>
+        </article>
+
+        <!-- Galerie Screenshots -->
+        <section class="mb-12">
+          <!-- <h2 class="section-subtitle mb-4">Captures de l’interface</h2> --> <!---->
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczNOS9l9liYG5MuM36eyjyULv9wZg3crc1p3mVS6u_M8MH094QTRN6jWkkC1uL28eN8asV4KtynUKx4zDN0wtQOcTauBgx7YeEZ_YVexbQpJkwKwVB3PLsTaqWSgUa_d2iJCT5dVTuS8esrUQ_sn1Dc6=w1226-h721-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczMFgAw-8ct17A9f4DWMFKt0adykFg_Rc4T4jOhU-MvguLXJT2L2TrDC1fo4lOlu4MY2L1WG_7wssdDfLjYxkKKCHq83stM1CkXj5I4xBIy0dx8BtP3QZ0HFV6K_qjmzNoS7rXTlgyOh-JrTCj-oL-Eb=w1206-h705-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+
+            <div class="gallery-card aspect-[4/3]">
+              <img src="https://lh3.googleusercontent.com/pw/AP1GczNANR97x2r9njjGDYMU3Ckje1fHw_VeQGNpITLS_FMlTYUAgsls0VjJOQLq4lH5ijyd7YQRFoCOh5PfZSEtPATB-xYZeF5OZkougRCcv4uKTGDFvL-sPZVluHrGKpw4crkaaUamuJrQW9sA8MUABJ6k=w1181-h317-s-no-gm?authuser=0" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </section>
+
+        <!-- <!-- Vidéo --> <!---->
+        <!-- <section class="mb-12"> -->
+          <!-- <h2 class="section-subtitle mb-4">Vidéo de démonstration</h2> -->
+          <!-- <div class="arcane-panel p-0 overflow-hidden"> -->
+            <!-- <div class="aspect-video"> -->
+              <!-- <iframe -->
+                <!-- class="w-full h-full" -->
+                <!-- src="https://www.youtube.com/embed/dQw4w9WgXcQ" -->
+                <!-- title="Vidéo de démonstration" -->
+                <!-- frameborder="0" -->
+                <!-- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" -->
+                <!-- allowfullscreen></iframe> -->
+            <!-- </div> -->
+          <!-- </div> -->
+        <!-- </section> -->
+
+        <!-- Liens externes -->
+        <section class="mb-12">
+          <h2 class="section-subtitle mb-4">Ressources & téléchargement</h2>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+
+            <!-- ZIP Download -->
+            <a href="../files/TurnOrder.zip" download
+               class="btn-primary flex items-center justify-between">
+              <span>
+                Télécharger TurnOrder
+                <span class="block text-xs text-silver/70">
+                  Version actuelle (ZIP)
+                </span>
+              </span>
+              <span class="text-lg">⇩</span>
+            </a>
+
+            <!-- Lien GitHub -->
+            <a href="https://github.com/TonPseudo/TurnOrder" target="_blank" rel="noopener"
+               class="btn-ghost flex items-center justify-between">
+              <span>
+                Voir le dépôt GitHub
+                <span class="block text-xs text-silver/70">
+                  Code source + mises à jour
+                </span>
+              </span>
+              <span class="text-lg">↗</span>
+            </a>
+			
+			<!-- Lien GitHub -->
+            <a href="https://github.com/TonPseudo/TurnOrder" target="_blank" rel="noopener"
+               class="btn-ghost flex items-center justify-between">
+              <span>
+                Curse Forge
+                <span class="block text-xs text-silver/70">
+                  Téléchargement par l'application
+                </span>
+              </span>
+              <span class="text-lg">↗</span>
+            </a>
+
+          </div>
+        </section>
+
+        <!-- Retour -->
+        <div class="mt-10">
+          <a href="../index.html" class="text-arcaneSoft hover:text-arcaneSoft/80 text-sm">
+            ← Retour à la galerie
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+        <!-- FOOTER -->
+    <footer class="border-t border-rune/60 bg-night/90">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-[0.75rem] text-silver/60 flex flex-col sm:flex-row gap-3 justify-between items-center">
+        <div>
+          © <span id="year"></span> • Pascale Coulombe - Sol • Univers fantasy, design & programmation
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-arcaneSoft/70">✦</span>
+          <span>Contact : <a href="mailto:adresse@email.com" class="text-arcaneSoft hover:text-arcaneSoft/80">ld.pascale.coulombe@gmail.com</a></span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+	
+	<!-- LIGHTBOX ARCANIC GW-DROW -->
+	<div id="lightbox" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50">
+
+	  <!-- Runes arcaniques flottantes -->
+	  <div class="pointer-events-none absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(123,77,201,0.4),_transparent_70%)]"></div>
+
+	  <!-- Carte décorative -->
+	  <div class="relative p-4 sm:p-6 rounded-2xl shadow-2xl bg-nightSoft/90 border border-arcaneSoft/40 ring-2 ring-arcane/30 backdrop-blur-md
+				  max-w-[90vw] max-h-[90vh] flex items-center justify-center">
+
+		<!-- Cadre ornemental -->
+		<div class="absolute -inset-1 rounded-2xl border border-arcaneSoft/30 shadow-[0_0_25px_rgba(123,77,201,0.5)] pointer-events-none"></div>
+		<div class="absolute inset-0 rounded-2xl border border-rune/40 pointer-events-none"></div>
+
+		<!-- Bouton de fermeture -->
+		<button id="lightbox-close"
+				class="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-obsidian border border-arcaneSoft/60 text-silver text-xl font-bold
+					   shadow-lg hover:bg-arcane hover:text-white hover:shadow-arcane transition-all">
+		  ✕
+		</button>
+
+		<!-- Image affichée -->
+		<img id="lightbox-img"
+			 src=""
+			 class="rounded-lg max-h-[85vh] max-w-[85vw] object-contain shadow-xl ring-1 ring-arcaneSoft/30" />
+				<div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(123,77,201,0.15),_transparent_70%)] pointer-events-none"></div>
+	  </div>
+	</div>
+	
+	<script>
+	document.querySelectorAll(".gallery-card img").forEach(img => {
+	  img.classList.add("cursor-pointer", "transition", "hover:opacity-80", "hover:scale-[1.02]");
+	  img.addEventListener("click", () => {
+		const lightbox = document.getElementById("lightbox");
+		const lightboxImg = document.getElementById("lightbox-img");
+
+		// Charger l'image
+		lightboxImg.src = img.src;
+
+		// Afficher le lightbox
+		lightbox.classList.remove("hidden");
+		lightbox.classList.add("flex");
+	  });
+	});
+
+	// Fermeture bouton X
+	document.getElementById("lightbox-close").addEventListener("click", () => {
+	  const lb = document.getElementById("lightbox");
+	  lb.classList.add("hidden");
+	  lb.classList.remove("flex");
+	});
+
+	// Fermeture clic extérieur
+	document.getElementById("lightbox").addEventListener("click", (e) => {
+	  if (e.target.id === "lightbox") {
+		e.target.classList.add("hidden");
+		e.target.classList.remove("flex");
+	  }
+	});
+	</script>
+
+	<script>
+	document.addEventListener('scroll', () => {
+	  const scrolled = window.pageYOffset;
+
+	  document.querySelectorAll('[data-parallax]').forEach(layer => {
+		const speed = parseFloat(layer.getAttribute('data-parallax'));
+		const yPos = scrolled * speed;
+
+		layer.style.transform = `translateY(${yPos}px)`;
+	  });
+	});
+	</script>
+	
+	<style>
+	@keyframes floatRunes {
+	  0% { transform: translateY(0); }
+	  100% { transform: translateY(-600px); }
+	}
+	</style>
+	
+	<script>
+	document.addEventListener('scroll', () => {
+	  const scrollY = window.scrollY;
+
+	  document.querySelectorAll('[data-parallax]').forEach(layer => {
+		const speed = parseFloat(layer.getAttribute('data-parallax'));
+		layer.style.transform = `translateY(${scrollY * speed}px)`;
+	  });
+
+	  document.querySelectorAll('[data-parallax-x]').forEach(layer => {
+		const speedX = parseFloat(layer.getAttribute('data-parallax-x'));
+		layer.style.transform = `translateX(${scrollY * speedX}px)`;
+	  });
+	});
+	</script>
+
+
+</body>
+</html>
